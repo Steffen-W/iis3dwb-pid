@@ -643,6 +643,9 @@ typedef struct
 #define IIS3DWB_Y_OFS_USR                    0x74U
 #define IIS3DWB_Z_OFS_USR                    0x75U
 #define IIS3DWB_FIFO_DATA_OUT_TAG            0x78U
+#define IIS3DWB_XL_TAG                       2
+#define IIS3DWB_TEMPERATURE_TAG              3
+#define IIS3DWB_TIMESTAMP_TAG                4
 typedef struct
 {
 #if DRV_BYTE_ORDER == DRV_LITTLE_ENDIAN
@@ -1108,12 +1111,7 @@ int32_t iis3dwb_fifo_status_get(stmdev_ctx_t *ctx,
 
 typedef struct
 {
-  enum : uint8_t
- {
-    IIS3DWB_XL_TAG = 2,
-    IIS3DWB_TEMPERATURE_TAG,
-    IIS3DWB_TIMESTAMP_TAG,
-  } tag;
+  iis3dwb_fifo_data_out_tag_t tag;
   uint8_t data[6];
 } iis3dwb_fifo_out_raw_t;
 int32_t iis3dwb_fifo_out_raw_get(stmdev_ctx_t *ctx, iis3dwb_fifo_out_raw_t *val);

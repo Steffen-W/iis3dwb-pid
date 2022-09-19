@@ -920,24 +920,7 @@ int32_t iis3dwb_fifo_out_raw_get(stmdev_ctx_t *ctx, iis3dwb_fifo_out_raw_t *val)
                          sizeof(iis3dwb_fifo_out_raw_t));
   bytecpy((uint8_t*)&fifo_data_out_tag, &buff[0]);
 
-  switch (fifo_data_out_tag.tag_sensor)
-  {
-    case iis3dwb_fifo_out_raw_t::IIS3DWB_XL_TAG:
-      val->tag = iis3dwb_fifo_out_raw_t::IIS3DWB_XL_TAG;
-      break;
-
-    case iis3dwb_fifo_out_raw_t::IIS3DWB_TEMPERATURE_TAG:
-      val->tag = iis3dwb_fifo_out_raw_t::IIS3DWB_TEMPERATURE_TAG;
-      break;
-
-    case iis3dwb_fifo_out_raw_t::IIS3DWB_TIMESTAMP_TAG:
-      val->tag = iis3dwb_fifo_out_raw_t::IIS3DWB_TIMESTAMP_TAG;
-      break;
-
-    default:
-      val->tag = iis3dwb_fifo_out_raw_t::IIS3DWB_XL_TAG;
-      break;
-  }
+  val->tag = fifo_data_out_tag;
 
   val->data[0] = buff[1];
   val->data[1] = buff[2];

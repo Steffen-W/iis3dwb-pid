@@ -22,10 +22,6 @@
 #ifndef IIS3DWB_REGS_H
 #define IIS3DWB_REGS_H
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
 /* Includes ------------------------------------------------------------------*/
 #include <stdint.h>
 #include <stddef.h>
@@ -1112,7 +1108,7 @@ int32_t iis3dwb_fifo_status_get(stmdev_ctx_t *ctx,
 
 typedef struct
 {
-  enum
+  enum : uint8_t
  {
     IIS3DWB_XL_TAG = 2,
     IIS3DWB_TEMPERATURE_TAG,
@@ -1124,15 +1120,6 @@ int32_t iis3dwb_fifo_out_raw_get(stmdev_ctx_t *ctx, iis3dwb_fifo_out_raw_t *val)
 int32_t iis3dwb_fifo_out_multi_raw_get(stmdev_ctx_t *ctx,
                                        iis3dwb_fifo_out_raw_t *fdata,
                                        uint16_t num);
-
-/**
-  *@}
-  *
-  */
-
-#ifdef __cplusplus
-}
-#endif
 
 #endif /* IIS3DWB_REGS_H */
 
